@@ -2,7 +2,9 @@
   <view class="relative bg-gray-100" :style="{ height: titleHeight + 'px' }">
     <view class="absolute flex items-center w-full" :style="titleStyle">
       <view class="w-10">
-        <text class="pl-4">{{ "" }}</text>
+        <text class="pl-4">
+          <nut-icon name="left" size="16" v-if="!logo"></nut-icon>
+        </text>
       </view>
       <view class="flex-1 flex justify-center">
         <image

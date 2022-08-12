@@ -1,19 +1,9 @@
 <template>
-  <view class="index">
-    <text class="text-red-600">表单页面</text>
+  <view class="">
+    <MingHeader logo></MingHeader>
   </view>
 </template>
 
-<script>
-import { ref } from "vue";
-
-export default {
-  setup() {
-    const msg = ref("Hello world");
-    console.log(123);
-    return {
-      msg,
-    };
-  },
-};
+<script setup>
+import MingHeader from "@/base-ui/header";
 </script>

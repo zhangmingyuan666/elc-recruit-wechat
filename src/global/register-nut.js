@@ -1,6 +1,24 @@
-import { Button, Image } from "@nutui/nutui-taro";
+import {
+  Button,
+  Icon,
+  Grid,
+  GridItem,
+  Form,
+  FormItem,
+  Cell,
+  CellGroup,
+} from "@nutui/nutui-taro";
 
-const nutUIElmements = [Button, Image];
+const nutUIElmements = [
+  Button,
+  Icon,
+  Grid,
+  GridItem,
+  Form,
+  FormItem,
+  Cell,
+  CellGroup,
+];
 
 export const registerNut = (app) => {
   nutUIElmements.forEach((element) => {
