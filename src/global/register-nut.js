@@ -7,6 +7,11 @@ import {
   FormItem,
   Cell,
   CellGroup,
+  TextArea,
+  Picker,
+  RadioGroup,
+  Radio,
+  Input,
 } from "@nutui/nutui-taro";
 
 const nutUIElmements = [
@@ -18,6 +23,11 @@ const nutUIElmements = [
   FormItem,
   Cell,
   CellGroup,
+  TextArea,
+  Picker,
+  RadioGroup,
+  Radio,
+  Input,
 ];
 
 export const registerNut = (app) => {
