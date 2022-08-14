@@ -99,7 +99,7 @@ const getPicWidth = computed(() => caculateWidth(windowWidth) + "px");
 <style lang="less">
 .page-con .share-ele {
   position: absolute;
-  left: 2rem;
+  left: 1rem;
   top: 4rem;
 }
 </style>
