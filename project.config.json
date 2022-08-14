@@ -40,5 +40,15 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "condition": {}
+  "condition": {},
+  "libVersion": "2.25.3",
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }
