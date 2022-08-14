@@ -14,6 +14,10 @@ import {
   Popup,
   OverLay,
   Avatar,
+  Steps,
+  Step,
+  Tag,
+  Divider,
 } from "@nutui/nutui-taro";
 
 const nutUIElmements = [
@@ -32,6 +36,10 @@ const nutUIElmements = [
   Popup,
   OverLay,
   Avatar,
+  Steps,
+  Step,
+  Tag,
+  Divider,
 ];
 
 export const registerNut = (app) => {

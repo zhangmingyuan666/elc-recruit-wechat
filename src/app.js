@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { registerNut } from "@/global/register-nut.js";
 import "windi.css";
-import "./app.less";
+import "./index.less";
 // import "@nutui/nutui-taro/dist/style.css";
 import "@nutui/nutui-taro/dist/styles/themes/default.scss";
 

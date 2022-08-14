@@ -6,8 +6,9 @@
     <view class="absolute flex items-center w-full" :style="titleStyle">
       <view class="w-30 h-full">
         <view class="pl-4 h-full">
-          <slot name="left" v-if="!logo"
-            ><nut-icon name="left" size="16"></nut-icon
+          <slot name="left">
+            <nut-icon name="left" size="16" v-if="!logo" @click="navigateBack">
+            </nut-icon
           ></slot>
         </view>
       </view>
@@ -26,11 +27,13 @@
 
 <script setup>
 import { computed, defineProps } from "vue";
+import Taro from "@tarojs/taro";
 import useDeviceInfo from "@/hooks/device-hooks";
 
 const props = defineProps({
   logo: Boolean,
   title: String,
+  shareAdmit: Boolean,
 });
 const { titleHeight, capsuleObj } = useDeviceInfo();
 
@@ -45,4 +48,8 @@ const logoStyle = computed(() => ({
   height: capsuleObj.height + "px",
   width: capsuleObj.height + "px",
 }));
+
+const navigateBack = () => {
+  Taro.navigateBack();
+};
 </script>

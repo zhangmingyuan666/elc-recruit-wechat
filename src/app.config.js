@@ -1,5 +1,12 @@
 export default defineAppConfig({
-  pages: ["pages/personal-info/index", "pages/form/index", "pages/index/index"],
+  pages: [
+    "pages/index/index",
+    "pages/personal-info/index",
+    "pages/form/index",
+    "pages/index/home-extention/glory/index",
+    "pages/index/home-extention/info/index",
+    "pages/index/home-extention/join/index",
+  ],
   tabBar: {
     color: "#ccc",
     selectedColor: "#000",
