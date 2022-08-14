@@ -26,30 +26,12 @@ export const academyDataList = [
 ];
 
 export const depList = [
-  {
-    text: "秘书部",
-    value: 1,
-  },
-  {
-    text: "维修部",
-    value: 2,
-  },
-  {
-    text: "实践部",
-    value: 3,
-  },
-  {
-    text: "项目部",
-    value: 4,
-  },
-  {
-    text: "外联",
-    value: 5,
-  },
-  {
-    text: "网宣",
-    value: 6,
-  },
+  "秘书部",
+  "维修部",
+  "实践部",
+  "项目部",
+  "外联部",
+  "网宣部",
 ];
 
 export const sourceOfApproachELC = [
@@ -59,3 +41,19 @@ export const sourceOfApproachELC = [
   "朋友圈",
   "微信公众号",
 ];
+
+export const BASE_FORM_CONFIG = {
+  openid: "",
+  stu_id: "",
+  name: "",
+  gender: "",
+  first_dept: "",
+  second_dept: "",
+  major: "",
+  college: "",
+  clazz: "",
+  where_find: "",
+  profile: "",
+  skill: "唱跳rap篮球",
+  has_join: "理塘社",
+};

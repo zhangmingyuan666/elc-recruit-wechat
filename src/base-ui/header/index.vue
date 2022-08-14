@@ -1,12 +1,17 @@
 <template>
-  <view class="relative bg-gray-100" :style="{ height: titleHeight + 'px' }">
+  <view
+    class="relative bg-gray-100 w-full"
+    :style="{ height: titleHeight + 'px' }"
+  >
     <view class="absolute flex items-center w-full" :style="titleStyle">
-      <view class="w-10">
-        <text class="pl-4">
-          <nut-icon name="left" size="16" v-if="!logo"></nut-icon>
-        </text>
+      <view class="w-30 h-full">
+        <view class="pl-4 h-full">
+          <slot name="left" v-if="!logo"
+            ><nut-icon name="left" size="16"></nut-icon
+          ></slot>
+        </view>
       </view>
-      <view class="flex-1 flex justify-center">
+      <view class="flex-1 flex justify-center h-full">
         <image
           v-if="logo"
           src="@/assets/img/logo.png"
@@ -14,7 +19,7 @@
         ></image>
         <view v-else>{{ title }}</view>
       </view>
-      <view class="w-10"></view>
+      <view class="w-30 h-full"></view>
     </view>
   </view>
 </template>

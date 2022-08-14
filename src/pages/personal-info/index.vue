@@ -1,19 +1,11 @@
 <template>
-  <view class="index">
-    <text class="text-red-600">personalinfo</text>
+  <view>
+    <PersonalHeader></PersonalHeader>
+    <PersonalProfile></PersonalProfile>
   </view>
 </template>
 
-<script>
-import { ref } from "vue";
-
-export default {
-  setup() {
-    const msg = ref("Hello world");
-    console.log(123);
-    return {
-      msg,
-    };
-  },
-};
+<script setup>
+import PersonalHeader from "@/components/personal-info/personal-header";
+import PersonalProfile from "@/components/personal-info/personal-profile";
 </script>

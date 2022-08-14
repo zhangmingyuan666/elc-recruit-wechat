@@ -11,7 +11,9 @@ import {
   Picker,
   RadioGroup,
   Radio,
-  Input,
+  Popup,
+  OverLay,
+  Avatar,
 } from "@nutui/nutui-taro";
 
 const nutUIElmements = [
@@ -27,12 +29,13 @@ const nutUIElmements = [
   Picker,
   RadioGroup,
   Radio,
-  Input,
+  Popup,
+  OverLay,
+  Avatar,
 ];
 
 export const registerNut = (app) => {
   nutUIElmements.forEach((element) => {
     app.use(element);
-    console.log(element);
   });
 };

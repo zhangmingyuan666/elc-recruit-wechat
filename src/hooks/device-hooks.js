@@ -7,11 +7,9 @@ export default function useDeviceInfo() {
 
   // 计算胶囊高度
   const capsuleObj = Taro.getMenuButtonBoundingClientRect();
-  console.log(capsuleObj);
 
   Taro.getSystemInfo({
     success: (res) => {
-      console.log(res);
       const { statusBarHeight } = res; //顶部状态栏高度
 
       globalData.capsuleObj = capsuleObj;

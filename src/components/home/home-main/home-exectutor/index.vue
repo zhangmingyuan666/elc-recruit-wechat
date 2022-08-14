@@ -9,9 +9,7 @@
       <text class="text-sm flex-center">扫一扫，告诉我们你到了</text>
     </view>
 
-    <nut-button plain :style="{ height: '1.5rem', width: '3rem' }"
-      >扫一扫</nut-button
-    >
+    <nut-button plain>扫一扫</nut-button>
   </view>
 </template>
 

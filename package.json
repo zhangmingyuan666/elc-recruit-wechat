@@ -6,7 +6,7 @@
   "templateInfo": {
     "name": "default",
     "typescript": false,
-    "css": "less"
+    "css": "sass"
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
@@ -42,6 +42,8 @@
     "@tarojs/plugin-html": "^3.3.2",
     "@tarojs/runtime": "3.4.13",
     "@tarojs/taro": "3.4.13",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
     "taro-plugin-tailwind": "^1.2.8",
     "vue": "^3.0.0"
   },
