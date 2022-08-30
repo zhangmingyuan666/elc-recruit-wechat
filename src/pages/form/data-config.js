@@ -1,4 +1,5 @@
 export const academyDataList = [
+  "",
   "机电工程学院",
   "自动化学院",
   "轻工化工学院",
@@ -13,23 +14,22 @@ export const academyDataList = [
   "物理与光电工程学院",
   "艺术与设计学院",
   "政法学院",
-  "马克思主义学院",
   "建筑与城市规划学院",
   "经济与贸易学院",
   "生物医药学院",
-  "微电子学院",
-  "集成电路学院",
-  "国际教育学院",
-  "继续教育学院",
   "先进制造学院",
-  "其他学院",
+  "生态环境与资源学院",
+  "集成电路学院",
+  "商学院",
+  "国际教育学院",
 ];
 
 export const depList = [
-  "秘书部",
+  "",
   "维修部",
-  "实践部",
+  "秘书部",
   "项目部",
+  "实践部",
   "外联部",
   "网宣部",
 ];
@@ -46,6 +46,7 @@ export const BASE_FORM_CONFIG = {
   openid: "",
   stu_id: "",
   name: "",
+  phone: "",
   gender: "",
   first_dept: "",
   second_dept: "",
@@ -57,3 +58,20 @@ export const BASE_FORM_CONFIG = {
   skill: "唱跳rap篮球",
   has_join: "理塘社",
 };
+
+// export const BASE_FORM_CONFIG = {
+//   openid: "",
+//   stuId: "3120006196",
+//   name: "卢本伟",
+//   phone: "13044202523",
+//   gender: 1,
+//   firstDept: 1,
+//   secondDept: 3,
+//   major: "微电子科学与工程",
+//   college: 3,
+//   clazz: "2",
+//   whereFind: "3",
+//   profile: "哈哈哈哈哈哈哈哈哈哈哈",
+//   skill: "唱跳rap篮球",
+//   hasJoin: "理塘社",
+// };

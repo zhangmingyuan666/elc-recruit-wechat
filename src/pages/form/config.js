@@ -11,12 +11,22 @@ export const formConfig = [
   },
   {
     tag: "input",
-    prop: "stu_id",
+    prop: "stuId",
     label: "学号",
     required: true,
     rules: [
       REQUIRED_RULES("学号"),
       { regex: /^[1-9][0-9]{9}$/, message: "学号为10位数字" },
+    ],
+  },
+  {
+    tag: "input",
+    prop: "phone",
+    label: "联系电话",
+    required: true,
+    rules: [
+      REQUIRED_RULES("联系电话"),
+      { regex: /^[1-9][0-9]{10}$/, message: "联系电话为11位数字" },
     ],
   },
   {
@@ -41,7 +51,7 @@ export const formConfig = [
   {
     tag: "picker",
     label: "第一意向部门",
-    prop: "first_dept",
+    prop: "firstDept",
     required: true,
     options: {
       columns: depList,
@@ -51,7 +61,7 @@ export const formConfig = [
   {
     tag: "picker",
     label: "第二意向部门",
-    prop: "second_dept",
+    prop: "secondDept",
     options: {
       columns: depList,
     },
@@ -83,21 +93,21 @@ export const formConfig = [
   {
     tag: "input",
     label: "已经加入的组织",
-    prop: "has_join",
+    prop: "hasJoin",
   },
   {
     tag: "input",
     label: "我掌握了",
     prop: "skill",
   },
-  // {
-  //   tag: "picker",
-  //   label: "从哪里了解的电协",
-  //   prop: "where_find",
-  //   options: {
-  //     columns: sourceOfApproachELC,
-  //   },
-  // },
+  {
+    tag: "picker",
+    label: "从哪里了解的电协",
+    prop: "whereFind",
+    options: {
+      columns: sourceOfApproachELC,
+    },
+  },
   {
     tag: "textarea",
     label: "我的简介",

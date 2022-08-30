@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "gdutelc-recruit-wechat",
   "description": "面向22级新生的电协招新小程序",
-  "appid": "wx247b6308286a468e",
+  "appid": "wxb30cee030fca9a84",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -41,7 +41,7 @@
   },
   "compileType": "miniprogram",
   "condition": {},
-  "libVersion": "2.25.3",
+  "libVersion": "2.25.2",
   "srcMiniprogramRoot": "dist/",
   "packOptions": {
     "ignore": [],
