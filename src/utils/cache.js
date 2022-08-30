@@ -11,7 +11,7 @@ class LocalCache {
   }
 
   setCache(key, value) {
-    if (value) Taro.setStorageSync(key, JSON.stringify(value));
+    Taro.setStorageSync(key, JSON.stringify(value));
   }
 }
 

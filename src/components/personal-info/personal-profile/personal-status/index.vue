@@ -1,5 +1,5 @@
 <template>
-  <view class="h-16">
+  <view class="h-16 my-4">
     <MingCard>
       <template v-slot>
         <view class="flex flex-start">

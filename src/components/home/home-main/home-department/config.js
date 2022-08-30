@@ -38,6 +38,6 @@ export const departmentList = [
 ];
 
 export const shareElementConfig = {
-  duration: 1500,
+  duration: 1000,
   position: "center",
 };

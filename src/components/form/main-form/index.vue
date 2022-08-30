@@ -8,7 +8,7 @@
       <template v-for="formChild of formConfig" :key="formChild.label">
         <nut-form-item
           label-align="right"
-          label-width="80"
+          label-width="100"
           :required="formChild.required"
           :label="formChild.label"
           :rules="formChild.rules"
@@ -46,6 +46,7 @@
             <picker
               mode="selector"
               :range="formChild.options.columns"
+              class="h-full w-full"
               @change="pickerOnChange($event, prop)"
             >
               <text>{{
