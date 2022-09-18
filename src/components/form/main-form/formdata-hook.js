@@ -24,9 +24,9 @@ export default () => {
 
   const getRecruitFormData = async () => {
     const res = await getRecruitForm(openid.value);
-    if (res) {
+    if (res.data) {
       // 搜索到了结果
-      formData.value = { ...res };
+      formData.value = { ...res.data };
       hasBeenSumbit.value = true;
     }
   };

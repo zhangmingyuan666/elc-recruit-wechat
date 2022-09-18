@@ -8,9 +8,7 @@ class CommonRequest {
   interceptors; // 是否有自己的拦截器
   constructor(config) {
     this.instance = axios.create(config);
-
     this.showLoading = config.showLoading ?? DEFAULT_SHOWLOADING;
-
     this.interceptors = config.interceptors;
 
     this.instance.interceptors.request.use(
@@ -26,10 +24,14 @@ class CommonRequest {
     // 默认拦截器的执行时机晚于自定义拦截器
     this.instance.interceptors.request.use(
       (config) => {
+        this.showLoading = config.showLoading;
         console.log("所有实例请求拦截成功");
 
         if (this.showLoading) {
-          Taro.showLoading(option);
+          Taro.showLoading({
+            title: "加载中",
+            mask: true,
+          });
         }
 
         return config;
@@ -46,16 +48,20 @@ class CommonRequest {
         if (this.showLoading) {
           Taro.hideLoading();
         }
-        console.log("12313213");
-        console.log(res);
-        console.log(res.data.data);
-        if (res.data.code === 200) {
+        this.showLoading = DEFAULT_SHOWLOADING;
+
+        try {
+          console.log(res);
+          if (!res.data) {
+            throw new Error("网络错误");
+          }
+          return res.data;
+        } catch (error) {
           Taro.showToast({
-            title: res.data.msg,
-            duration: 1500,
+            title: "网络错误哟~",
+            icon: "error",
           });
         }
-        return res.data.data;
       },
       (err) => {
         console.log("所有实例res拦截失败");
@@ -74,6 +80,10 @@ class CommonRequest {
       if (config.interceptors?.requestInterceptors) {
         config = config.interceptors.requestInterceptors(config);
       }
+      console.log(config);
+      console.log(config.showLoading);
+      console.log(this.showLoading);
+      console.log("-------------------------------");
 
       this.instance
         .request(config)

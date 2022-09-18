@@ -32,7 +32,6 @@ export default createStore({
     },
     changeStatus(state, status) {
       state.status = status;
-      console.log("status", status);
       localCache.setCache("status", status);
     },
     changeSignInStatus(state, signInStatus) {
@@ -42,7 +41,7 @@ export default createStore({
   actions: {
     async getOpenidAction({ commit }) {
       const { openid, userInfo } = await wxLogin();
-      console.log(openid, userInfo);
+
       if (openid) {
         commit("changeOpenid", openid);
         commit("changeUserInfo", userInfo);
@@ -51,13 +50,14 @@ export default createStore({
     async getInterviewStatus({ commit, rootState }) {
       const { openid } = rootState;
       if (openid) {
-        const status = await getPersonalStatus(openid);
-        commit("changeStatus", status);
+        const res = await getPersonalStatus(openid);
+        commit("changeStatus", res.data);
       }
     },
-    async getSignInStatusAction({ commit }) {
-      const signInStatus = await getSignInStatus();
-      commit("changeSignInStatus", signInStatus);
+    async getSignInStatusAction({ commit, rootState }) {
+      const { openid } = rootState;
+      const res = await getSignInStatus(openid);
+      commit("changeSignInStatus", res.data);
     },
   },
 

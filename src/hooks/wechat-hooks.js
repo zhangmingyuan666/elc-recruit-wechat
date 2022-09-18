@@ -11,9 +11,7 @@ export default () => {
 
   const permitScanQRCode = async () => {
     const res = await wx.scanCode();
-    console.log("=====================");
-    console.log(res.result);
-
+    console.log(res);
     return res.result;
   };
 
@@ -37,7 +35,7 @@ export default () => {
         login(),
         getUserInfo(),
       ]);
-      const openid = await getLogin(code);
+      const { openid } = await getLogin(code);
       // console.log(res);
       // const openid = res.data.data;
 

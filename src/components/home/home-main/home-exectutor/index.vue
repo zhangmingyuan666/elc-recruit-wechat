@@ -19,9 +19,33 @@
 <script setup>
 import MingCard from "@/base-ui/card";
 import useWechat from "@/hooks/wechat-hooks";
+import Taro from "@tarojs/taro";
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { putPersonalSignIn } from "@/service/personal";
 const { permitScanQRCode } = useWechat();
+const store = useStore();
+const openid = computed(() => store.state.openid);
 
 const scanCodeEvent = async () => {
-  const res = await permitScanQRCode();
+  try {
+    const qrCodeResult = await permitScanQRCode();
+    console.log(qrCodeResult);
+    const res = await putPersonalSignIn(openid.value, qrCodeResult);
+    if (res.data.code === 200) {
+      // 此时说明更改成功
+      store.commit("changeSignInStatus", 1);
+      Taro.showToast({
+        title: "扫码签到成功",
+        duration: 2000,
+      });
+    }
+  } catch (err) {
+    Taro.showToast({
+      title: "扫码签到失败",
+      icon: "error",
+      duration: 2000,
+    });
+  }
 };
 </script>

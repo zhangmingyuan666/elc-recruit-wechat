@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import MingCard from "@/base-ui/card";
 import { tagConfig } from "./tagconfig";
 import { getSignInStatus } from "@/service/personal";
@@ -29,8 +29,12 @@ const store = useStore();
 const tagStatus = computed(() => store.state.signInStatus);
 const tagInfo = computed(() => tagConfig[tagStatus.value]);
 
+onMounted(() => {
+  store.dispatch("getSignInStatusAction");
+});
+
 // 轮询签到状态，5s一次
-setTimeout(() => {
+setInterval(() => {
   store.dispatch("getSignInStatusAction");
 }, 5000);
 </script>

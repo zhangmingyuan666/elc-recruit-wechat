@@ -15,9 +15,9 @@ export const getPersonalStatus = (openid) => {
 };
 
 // 签到接口
-export const putPersonalSignIn = (openid) => {
+export const putPersonalSignIn = (openid, signInKey) => {
   return commonRequest.put({
-    url: APIs.putPersonalSignInAPI + openid,
+    url: APIs.putPersonalSignInAPI + openid + "/" + signInKey,
   });
 };
 
@@ -28,7 +28,7 @@ export const getInterviewProcess = () => {
   });
 };
 
-export const getSignInStatus = () => {
+export const getSignInStatus = (openid) => {
   return commonRequest.get({
     url: APIs.getSignInStatusAPI + openid,
   });

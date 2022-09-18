@@ -16,6 +16,7 @@ export const postRecruitForm = (data) => {
 export const getRecruitForm = (openid) => {
   return commonRequest.get({
     url: APIs.getFormInfoAPI + openid,
+    showLoading: true,
   });
 };
 
