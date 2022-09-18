@@ -4,6 +4,7 @@ import useWechat from "@/hooks/wechat-hooks";
 import { interviewModule } from "./modules/interview";
 import { personalModule } from "./modules/personal";
 import { getPersonalStatus } from "@/service/personal";
+import { getSignInStatus } from "@/service/personal";
 const { wxLogin } = useWechat();
 export default createStore({
   state: {
@@ -11,11 +12,12 @@ export default createStore({
     avatarUrl: localCache.getCache("avatarUrl"),
     nickName: localCache.getCache("nickName"),
     status: localCache.getCache("status"),
+    signInStatus: 0, // 还没签到
   },
   getters: {
     getAvatar: (state) => state.avatarUrl,
     getNickname: (state) => state.nickName,
-    getStatus: (state) => state.status,
+    getStatus: (state) => +state.status,
   },
   mutations: {
     changeOpenid(state, openid) {
@@ -33,6 +35,9 @@ export default createStore({
       console.log("status", status);
       localCache.setCache("status", status);
     },
+    changeSignInStatus(state, signInStatus) {
+      state.signInStatus = signInStatus;
+    },
   },
   actions: {
     async getOpenidAction({ commit }) {
@@ -49,6 +54,10 @@ export default createStore({
         const status = await getPersonalStatus(openid);
         commit("changeStatus", status);
       }
+    },
+    async getSignInStatusAction({ commit }) {
+      const signInStatus = await getSignInStatus();
+      commit("changeSignInStatus", signInStatus);
     },
   },
 

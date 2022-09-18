@@ -1,10 +1,11 @@
 import { commonRequest } from "..";
 
 const APIs = {
-  getPersonalStatusAPI: "/recruit/elc_access/get_status/",
+  getPersonalStatusAPI: "/recruit/elc_access/get_allStatus/",
   putPersonalSignInAPI: "/recruit/elc_access/sign_in/",
   getInterviewProcessAPI:
     "/interview/elc_access/process_status_code/get_now_process",
+  getSignInStatusAPI: "/recruit/elc_access/get_signInStatus/",
 };
 
 export const getPersonalStatus = (openid) => {
@@ -24,5 +25,11 @@ export const putPersonalSignIn = (openid) => {
 export const getInterviewProcess = () => {
   return commonRequest.get({
     url: APIs.getInterviewProcessAPI,
+  });
+};
+
+export const getSignInStatus = () => {
+  return commonRequest.get({
+    url: APIs.getSignInStatusAPI + openid,
   });
 };

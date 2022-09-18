@@ -18,6 +18,7 @@ import {
   Step,
   Tag,
   Divider,
+  Empty,
 } from "@nutui/nutui-taro";
 
 const nutUIElmements = [
@@ -40,6 +41,7 @@ const nutUIElmements = [
   Step,
   Tag,
   Divider,
+  Empty,
 ];
 
 export const registerNut = (app) => {

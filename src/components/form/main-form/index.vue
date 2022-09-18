@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view v-if="openid">
     <nut-form
       :model-value="formData"
       :style="{ fontSize: '20px' }"
@@ -8,7 +8,7 @@
       <template v-for="formChild of formConfig" :key="formChild.label">
         <nut-form-item
           label-align="right"
-          label-width="100"
+          label-width="120"
           :required="formChild.required"
           :label="formChild.label"
           :rules="formChild.rules"
@@ -63,7 +63,7 @@
           <nut-button
             type="primary"
             style="margin-left: 10px"
-            @tap="submit"
+            @tap="submitForm"
             bindtap="login"
           >
             提交
@@ -73,10 +73,18 @@
       </nut-cell>
     </nut-form>
   </view>
+  <view v-else>
+    <nut-button type="primary" @click="clickToFirstLogin"
+      >我是第一次报名</nut-button
+    >
+    <nut-button plain type="primary" @click="clickToSecondLogin"
+      >我提交过报名了</nut-button
+    >
+  </view>
 </template>
 
 <script setup>
-import { defineProps, ref, onBeforeMount } from "vue";
+import { defineProps, ref, onBeforeMount, computed } from "vue";
 import { BASE_FORM_CONFIG } from "@/pages/form/data-config";
 import { useStore } from "vuex";
 import useFormdata from "./formdata-hook";
@@ -87,14 +95,20 @@ const props = defineProps({
 });
 
 const store = useStore();
-const { formData, submit, ruleForm } = useFormdata(
-  store.state.openid,
-  () => store.dispatch("getOpenidAction") // 没有openid的回调
-);
+const openid = computed(() => store.state.openid);
+
+const { formData, submit, ruleForm, getRecruitFormData } = useFormdata();
 
 // 定义当前选中的prop
 const currentPickerProp = ref("");
 const currentPickerList = ref([]);
+
+const submitForm = async () => {
+  // if (openid.value) {
+  //   await store.dispatch("getOpenidAction");
+  // }
+  await submit(openid.value);
+};
 
 // 赋值当前选中的prop
 const sendPickerProp = (prop, list) => {
@@ -104,10 +118,17 @@ const sendPickerProp = (prop, list) => {
 
 // 真正选择的赋值
 const pickerOnChange = (e) => {
-  console.log(e);
   const index = +e.detail.value;
   formData.value[currentPickerProp.value] = index;
   currentPickerProp.value = "";
-  console.log(formData.value);
+};
+
+const clickToFirstLogin = async () => {
+  await store.dispatch("getOpenidAction");
+};
+
+const clickToSecondLogin = async () => {
+  await store.dispatch("getOpenidAction");
+  await getRecruitFormData();
 };
 </script>

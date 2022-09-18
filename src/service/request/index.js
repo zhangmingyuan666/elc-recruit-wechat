@@ -47,10 +47,15 @@ class CommonRequest {
           Taro.hideLoading();
         }
         console.log("12313213");
-
+        console.log(res);
         console.log(res.data.data);
-
-        return res.data.data ?? res;
+        if (res.data.code === 200) {
+          Taro.showToast({
+            title: res.data.msg,
+            duration: 1500,
+          });
+        }
+        return res.data.data;
       },
       (err) => {
         console.log("所有实例res拦截失败");

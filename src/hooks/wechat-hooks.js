@@ -9,12 +9,12 @@ export default () => {
     });
   };
 
-  const permitScanQRCode = () => {
-    wx.scanCode({
-      success(res) {
-        console.log(res);
-      },
-    });
+  const permitScanQRCode = async () => {
+    const res = await wx.scanCode();
+    console.log("=====================");
+    console.log(res.result);
+
+    return res.result;
   };
 
   const wxLogin = async () => {
@@ -37,8 +37,9 @@ export default () => {
         login(),
         getUserInfo(),
       ]);
-
-      const { openid } = await getLogin(code);
+      const openid = await getLogin(code);
+      // console.log(res);
+      // const openid = res.data.data;
 
       if (openid) {
         return { openid, userInfo };
@@ -49,6 +50,11 @@ export default () => {
         };
       }
     } catch (err) {
+      Taro.showToast({
+        icon: "error",
+        title: err.msg,
+        duration: 1500,
+      });
       console.log(err);
     }
   };

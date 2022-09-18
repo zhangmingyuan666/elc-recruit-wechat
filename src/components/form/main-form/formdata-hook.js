@@ -1,4 +1,4 @@
-import { defineProps, ref, onBeforeMount } from "vue";
+import { defineProps, ref, onBeforeMount, computed } from "vue";
 import { BASE_FORM_CONFIG } from "@/pages/form/data-config";
 import { useStore } from "vuex";
 import localCache from "@/utils/cache";
@@ -8,20 +8,30 @@ import {
   putUpdateRecruitForm,
 } from "@/service/form";
 
-export default (openid, callback) => {
+export default () => {
   const formData = ref(BASE_FORM_CONFIG);
   const hasBeenSumbit = ref(false);
-
   const ruleForm = ref(null);
 
+  const store = useStore();
+  const openid = computed(() => store.state.openid);
+
   onBeforeMount(async () => {
-    if (openid) {
-      const res = await getRecruitForm(openid);
-      formData.value = { ...res };
-      hasBeenSumbit.value = true;
+    if (openid.value) {
+      await getRecruitFormData();
     }
   });
 
+  const getRecruitFormData = async () => {
+    const res = await getRecruitForm(openid.value);
+    if (res) {
+      // 搜索到了结果
+      formData.value = { ...res };
+      hasBeenSumbit.value = true;
+    }
+  };
+
+  // 进行表单提交的详细操作
   const handleRecruitForm = async (openid, data) => {
     let res = null;
     if (!hasBeenSumbit.value) {
@@ -42,14 +52,10 @@ export default (openid, callback) => {
     return res;
   };
 
-  const submit = () => {
-    if (!openid) {
-      // 如果没有openid，需要进行派发openid
-      callback && callback();
-    }
-    ruleForm.value.validate().then(async ({ valid, errors }) => {
+  const submit = async (openid) => {
+    await ruleForm.value.validate().then(async ({ valid, errors }) => {
       if (valid) {
-        console.log("success", formData);
+        console.log(formData.value);
         const res = await handleRecruitForm(openid, formData.value); // 提交成功？
         console.log(res);
       } else {
@@ -58,5 +64,5 @@ export default (openid, callback) => {
     });
   };
 
-  return { formData, submit, ruleForm };
+  return { formData, submit, ruleForm, getRecruitFormData };
 };

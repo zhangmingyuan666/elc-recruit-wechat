@@ -21,7 +21,7 @@ import MingCard from "@/base-ui/card";
 import useWechat from "@/hooks/wechat-hooks";
 const { permitScanQRCode } = useWechat();
 
-const scanCodeEvent = () => {
-  permitScanQRCode();
+const scanCodeEvent = async () => {
+  const res = await permitScanQRCode();
 };
 </script>

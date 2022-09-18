@@ -1,20 +1,16 @@
 export const stepsList = [
   {
-    content: "成为电协部长",
+    content: "报名阶段",
   },
   {
-    content: "写招新小程序",
+    content: "一面阶段",
   },
   {
-    content: "一面",
+    content: "二面阶段",
     address: "实验四号楼-308",
   },
   {
-    content: "笔试",
+    content: "招新结束，你差点寄了",
     address: "实验四号楼-208",
-  },
-  {
-    content: "二面",
-    address: "实验四号楼-306",
   },
 ];
