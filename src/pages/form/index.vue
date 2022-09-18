@@ -1,7 +1,6 @@
 <template>
   <view class="">
     <MingHeader logo></MingHeader>
-    <input type="text" />
     <MainForm :formConfig="formConfig"></MainForm>
   </view>
 </template>

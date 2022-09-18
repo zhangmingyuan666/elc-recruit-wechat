@@ -7,5 +7,6 @@ const APIs = {
 export const getLogin = (js_code, grant_type = "authorization_code") => {
   return commonRequest.get({
     url: APIs.getLoginAPI + js_code + "/" + grant_type,
+    showLoading: true,
   });
 };

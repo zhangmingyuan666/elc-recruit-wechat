@@ -29,11 +29,21 @@ export default () => {
       return res;
     }
 
+    async function getSubscribeMessage() {
+      wx.requestSubscribeMessage({
+        tmplIds: [""],
+        success(res) {
+          console.log(res);
+        },
+      });
+    }
+
     // 进行获取
     try {
       const [{ code }, { userInfo }] = await Promise.all([
         login(),
         getUserInfo(),
+        // getSubscribeMessage(),
       ]);
       const { openid } = await getLogin(code);
       // console.log(res);

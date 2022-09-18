@@ -73,12 +73,12 @@
       </nut-cell>
     </nut-form>
   </view>
-  <view v-else>
+  <view v-else class="flex flex-col m-4 h-30 justify-around">
     <nut-button type="primary" @click="clickToFirstLogin"
       >我是第一次报名</nut-button
     >
     <nut-button plain type="primary" @click="clickToSecondLogin"
-      >我提交过报名了</nut-button
+      >我提交过报名表了</nut-button
     >
   </view>
 </template>
