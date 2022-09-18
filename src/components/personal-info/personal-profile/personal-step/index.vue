@@ -8,7 +8,11 @@
     </template>
     <template v-slot:extand>
       <view class="h-100 px-2">
-        <nut-steps direction="vertical" progress-dot current="2">
+        <nut-steps
+          direction="vertical"
+          progress-dot
+          :current="currentStepIndex"
+        >
           <template v-for="(step, index) of stepsList" :key="step.content">
             <nut-step :title="caculateTitle(index)">
               <template v-slot:content>
@@ -26,9 +30,13 @@
 <script setup>
 import MingCard from "@/base-ui/card";
 import { stepsList } from "./step-config";
-import { ref } from "vue";
-
-const currentStepIndex = ref(1);
+import { computed, ref, onMounted } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+onMounted(() => {
+  store.dispatch("getInterviewStatus");
+});
+const currentStepIndex = computed(() => store.getters.getStatus);
 
 const caculateTitle = (index) => {
   if (currentStepIndex.value > index) {

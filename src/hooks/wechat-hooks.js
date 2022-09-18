@@ -27,25 +27,25 @@ export default () => {
       const res = await Taro.getUserProfile({
         desc: "用于千与千寻发帖管理",
       });
+
       return res;
     }
 
     // 进行获取
     try {
-      const [{ code }, personalInfo] = await Promise.all([
+      const [{ code }, { userInfo }] = await Promise.all([
         login(),
         getUserInfo(),
       ]);
-      console.log(code);
-      console.log(personalInfo);
+
       const { openid } = await getLogin(code);
 
       if (openid) {
-        return openid;
+        return { openid, userInfo };
       } else {
         throw {
           status: 201,
-          msg: "用户名不存在",
+          msg: "登录失败",
         };
       }
     } catch (err) {

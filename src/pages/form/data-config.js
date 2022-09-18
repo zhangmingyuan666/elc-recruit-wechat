@@ -44,19 +44,19 @@ export const sourceOfApproachELC = [
 
 export const BASE_FORM_CONFIG = {
   openid: "",
-  stu_id: "",
+  stuId: "",
   name: "",
   phone: "",
   gender: "",
-  first_dept: "",
-  second_dept: "",
+  firstDept: "",
+  secondDept: "",
   major: "",
   college: "",
   clazz: "",
-  where_find: "",
+  whereFind: "",
   profile: "",
   skill: "唱跳rap篮球",
-  has_join: "理塘社",
+  hasJoin: "理塘社",
 };
 
 // export const BASE_FORM_CONFIG = {

@@ -1,9 +1,11 @@
+const path = require("path");
+
 module.exports = {
   env: {
-    NODE_ENV: '"development"'
+    NODE_ENV: '"development"',
   },
-  defineConstants: {
-  },
+  plugins: [path.resolve(__dirname, "plugins/minifyMainPackage.js")],
+  defineConstants: {},
   mini: {},
-  h5: {}
-}
+  h5: {},
+};
