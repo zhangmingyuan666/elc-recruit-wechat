@@ -1,3 +1,9 @@
+/*
+ * @Date: 2022-08-14 13:37:54
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-01 22:21:19
+ * @FilePath: \gdutelc-recruit-wechat\src\components\home\home-extention\config.js
+ */
 import { GLORY_CONTENT, INFO_CONTENT } from "./data-config";
 
 export const INFO_BANNER = {
@@ -14,5 +20,5 @@ export const GLORY_BANNER = {
 
 export const JOIN_BANNER = {
   title: "加入我们",
-  desc: "加入我们能收获什么？",
+  desc: "加入我们，你能收获什么？",
 };

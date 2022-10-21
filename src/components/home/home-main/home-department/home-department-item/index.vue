@@ -2,7 +2,8 @@
   <view class="w-full">
     <image
       mode="widthFix"
-      :src="require(`@/assets/img/department-logo/0${index}.png`)"
+      v-if="department.logo"
+      :src="department.logo"
       class="w-full"
     ></image>
     <p class="text-xl">{{ department.name }}</p>

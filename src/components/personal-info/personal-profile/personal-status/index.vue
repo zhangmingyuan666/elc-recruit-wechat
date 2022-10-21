@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2022-08-14 09:37:06
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-02 00:56:57
+ * @FilePath: \gdutelc-recruit-wechat\src\components\personal-info\personal-profile\personal-status\index.vue
+-->
 <template>
   <view class="h-16 my-4">
     <MingCard>
@@ -33,8 +39,8 @@ onMounted(() => {
   store.dispatch("getSignInStatusAction");
 });
 
-// 轮询签到状态，5s一次
-setInterval(() => {
-  store.dispatch("getSignInStatusAction");
-}, 5000);
+// // 轮询签到状态，5s一次
+// setInterval(() => {
+//   store.dispatch("getSignInStatusAction");
+// }, 5000);
 </script>

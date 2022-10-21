@@ -1,28 +1,32 @@
 <template>
-  <view
-    class="relative flex justify-around flex-wrap px-2 mt-4"
-    :border="false"
-  >
+  <view class="relative flex justify-start flex-wrap my-4" :border="false">
     <template
       v-for="(department, index) of departmentList"
       :key="department.desc"
     >
-      <view class="mt-4" @click="openWithBindObj(index)">
-        <share-element
-          mapkey="name"
-          class="share-ele"
-          :duration="shareElementConfig.duration"
-          :transform="transformIndex === index"
-          easingFunction="ease"
-        >
-          <image
-            mode="widthFix"
-            :src="require(`@/assets/img/department-logo/0${index + 1}.png`)"
-            :style="{ width: getPicWidth }"
-          ></image>
-        </share-element>
-        <p class="text-xl">{{ department.name }}</p>
-        <p class="text-sm text-gray-400">{{ department.desc }}</p>
+      <view
+        class="flex items-center justify-center mt-4"
+        @click="openWithBindObj(index, department.logo)"
+        :style="{ width: '50%' }"
+      >
+        <view>
+          <share-element
+            mapkey="name"
+            class="share-ele"
+            :duration="shareElementConfig.duration"
+            :transform="transformIndex === index"
+            easingFunction="ease"
+          >
+            <image
+              mode="widthFix"
+              v-if="department.logo"
+              :src="department.logo"
+              :style="{ width: getPicWidth }"
+            ></image>
+          </share-element>
+          <p class="text-xl">{{ department.name }}</p>
+          <p class="text-sm text-gray-400">{{ department.desc }}</p>
+        </view>
       </view>
     </template>
   </view>
@@ -47,7 +51,7 @@
           >
             <image
               mode="widthFix"
-              :src="src ?? require(`${src}`)"
+              :src="src"
               :style="{ width: getPicWidth, height: getPicWidth }"
             ></image>
           </share-element>

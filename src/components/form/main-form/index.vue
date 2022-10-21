@@ -4,11 +4,13 @@
       :model-value="formData"
       :style="{ fontSize: '20px' }"
       ref="ruleForm"
+      class="h-full"
     >
       <template v-for="formChild of formConfig" :key="formChild.label">
         <nut-form-item
           label-align="right"
           label-width="120"
+          class="h-full"
           :required="formChild.required"
           :label="formChild.label"
           :rules="formChild.rules"
@@ -18,11 +20,18 @@
             <input
               type="text"
               v-model="formData[formChild.prop]"
-              class="w-full"
+              :placeholder="formChild.label"
+              class="w-full text-black"
             />
           </template>
           <template v-if="formChild.tag === 'textarea'">
-            <nut-textarea v-model="formData[formChild.prop]" />
+            <textarea
+              v-model="formData[formChild.prop]"
+              type="text"
+              :cursorSpacing="200"
+              :auto-height="true"
+              :disable-default-padding="true"
+            />
           </template>
           <template v-if="formChild.tag === 'radio'">
             <nut-radiogroup
@@ -41,6 +50,7 @@
           >
           <view
             v-if="formChild.tag === 'picker'"
+            class="h-full"
             @click="sendPickerProp(formChild.prop, formChild.options.columns)"
           >
             <picker
@@ -49,8 +59,9 @@
               class="h-full w-full"
               @change="pickerOnChange($event, prop)"
             >
-              <text>{{
-                formData[formChild.prop] === ""
+              <text class="w-full text-black">{{
+                formData[formChild.prop] === "" ||
+                !formChild.options.columns[formData[formChild.prop]]
                   ? "请选择你的选项"
                   : formChild.options.columns[formData[formChild.prop]]
               }}</text>
@@ -68,18 +79,38 @@
           >
             提交
           </nut-button>
-          <nut-button @click="reset">重置表单</nut-button>
+          <!-- <nut-button @click="reset">重置表单</nut-button> -->
         </view>
       </nut-cell>
     </nut-form>
   </view>
-  <view v-else class="flex flex-col m-4 h-30 justify-around">
-    <nut-button type="primary" @click="clickToFirstLogin"
-      >我是第一次报名</nut-button
-    >
-    <nut-button plain type="primary" @click="clickToSecondLogin"
-      >我提交过报名表了</nut-button
-    >
+  <view v-else class="flex flex-col justify-around m-4">
+    <div class="my-2">
+      <nut-button
+        type="primary"
+        @click="clickToFirstLogin"
+        :style="{ width: '100% !important' }"
+        >我是第一次报名</nut-button
+      >
+    </div>
+    <div class="my-2">
+      <nut-button
+        plain
+        type="primary"
+        @click="clickToSecondLogin"
+        :style="{ width: '100% !important' }"
+        >我提交过报名表了</nut-button
+      >
+    </div>
+    <!-- <div class="my-2">
+      <nut-button
+        plain
+        type="primary"
+        @click="clickToSendMessage"
+        :style="{ width: '100% !important' }"
+        >我要获取数据</nut-button
+      >
+    </div> -->
   </view>
 </template>
 
@@ -90,10 +121,12 @@ import { useStore } from "vuex";
 import useFormdata from "./formdata-hook";
 import localCache from "@/utils/cache";
 import { postRecruitForm } from "@/service/form";
+import useWechat from "@/hooks/wechat-hooks";
+
 const props = defineProps({
   formConfig: () => {},
 });
-
+const { getMessage } = useWechat();
 const store = useStore();
 const openid = computed(() => store.state.openid);
 
@@ -130,5 +163,9 @@ const clickToFirstLogin = async () => {
 const clickToSecondLogin = async () => {
   await store.dispatch("getOpenidAction");
   await getRecruitFormData();
+};
+
+const clickToSendMessage = async () => {
+  await getMessage();
 };
 </script>

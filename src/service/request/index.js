@@ -52,9 +52,7 @@ class CommonRequest {
 
         try {
           console.log(res);
-          if (!res.data) {
-            throw new Error("网络错误");
-          }
+
           return res.data;
         } catch (error) {
           Taro.showToast({
@@ -81,10 +79,6 @@ class CommonRequest {
         config = config.interceptors.requestInterceptors(config);
       }
       console.log(config);
-      console.log(config.showLoading);
-      console.log(this.showLoading);
-      console.log("-------------------------------");
-
       this.instance
         .request(config)
         .then((res) => {

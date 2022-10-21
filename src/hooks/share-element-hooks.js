@@ -6,10 +6,10 @@ export default (list) => {
   const listItem = ref(list[0]);
   const src = ref("");
 
-  const openWithBindObj = (index) => {
+  const openWithBindObj = (index, value) => {
     transformIndex.value = index;
     listItem.value = list[index];
-    src.value = `/assets/img/department-logo/0${index + 1}.png`;
+    src.value = value;
     changeShowStatus();
   };
 

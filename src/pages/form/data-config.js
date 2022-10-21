@@ -1,3 +1,9 @@
+/*
+ * @Date: 2022-08-13 10:30:51
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-02 01:21:35
+ * @FilePath: \gdutelc-recruit-wechat\src\pages\form\data-config.js
+ */
 export const academyDataList = [
   "",
   "机电工程学院",
@@ -32,6 +38,7 @@ export const depList = [
   "实践部",
   "外联部",
   "网宣部",
+  "网络组",
 ];
 
 export const sourceOfApproachELC = [

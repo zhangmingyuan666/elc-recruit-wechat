@@ -1,3 +1,9 @@
+/*
+ * @Date: 2022-08-30 13:46:17
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-01 23:56:19
+ * @FilePath: \gdutelc-recruit-wechat\src\store\index.js
+ */
 import { createStore } from "vuex";
 import localCache from "@/utils/cache";
 import useWechat from "@/hooks/wechat-hooks";

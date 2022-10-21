@@ -46,7 +46,7 @@ export const formConfig = [
         },
       ],
     },
-    rules: [REQUIRED_RULES("性别")],
+    rules: [],
   },
   {
     tag: "picker",

@@ -1,5 +1,5 @@
 <template>
-  <view class="">
+  <view>
     <MingHeader logo></MingHeader>
     <MainForm :formConfig="formConfig"></MainForm>
   </view>
