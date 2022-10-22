@@ -1,3 +1,10 @@
+<!--
+ * @Date: 2022-08-12 18:44:51
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-22 23:27:06
+ * @FilePath: \gdutelc-recruit-wechat\src\components\home\home-main\home-exectutor\index.vue
+ * @description: none
+-->
 <template>
   <view class="h-16" @click="scanCodeEvent">
     <MingCard>
@@ -29,12 +36,23 @@ const openid = computed(() => store.state.openid);
 
 const scanCodeEvent = async () => {
   try {
+    const ans = await wx.requestSubscribeMessage({
+      tmplIds: ["i5rbTJ70IEajfuWmYG7jCeE4fsh3c9fZ1aqkQY3Cqos"],
+    });
+    if (Object.values(ans).includes("reject")) {
+      Taro.showToast({
+        title: "必须要允许通知才可以收到面试信息",
+        icon: "error",
+        duration: 2000,
+      });
+      return;
+    }
+
     const qrCodeResult = await permitScanQRCode();
     console.log(qrCodeResult);
     const res = await putPersonalSignIn(openid.value, qrCodeResult);
     if (res.data.code === 200) {
       // 此时说明更改成功
-      store.commit("changeSignInStatus", 1);
       Taro.showToast({
         title: "扫码签到成功",
         duration: 2000,

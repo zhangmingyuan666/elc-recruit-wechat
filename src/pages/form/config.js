@@ -7,7 +7,10 @@ export const formConfig = [
     prop: "name",
     label: "姓名",
     required: true,
-    rules: [REQUIRED_RULES("姓名")],
+    rules: [
+      REQUIRED_RULES("姓名"),
+      { regex: /^[\u4E00-\u9FA5]{1,20}$/, message: "姓名长度小于20，且为中文" },
+    ],
   },
   {
     tag: "input",

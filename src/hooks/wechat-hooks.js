@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-14 12:04:57
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-02 00:27:14
+ * @LastEditTime: 2022-10-22 23:31:01
  * @FilePath: \gdutelc-recruit-wechat\src\hooks\wechat-hooks.js
  */
 import Taro from "@tarojs/taro";
@@ -70,16 +70,17 @@ export default () => {
   };
 
   async function getMessage() {
-    Taro.requestSubscribeMessage({
-      tmplIds: [
-        "Vfg-JE6Q_Yk1N6amAR-PA1JXLTC4ez0w1dA7ejztEGg",
-        "s8yDL0-Kez6ZbAhp9dxuaFgRFADqS-jr7TcGcwLBnWk",
-        "daPtFvfc9kr_MtPeIqQEwLW8UAqJ-uZPwS0VkF37tUQ",
-      ],
-      success(res) {
-        console.log(res);
-      },
+    const ans = await wx.requestSubscribeMessage({
+      tmplIds: ["i5rbTJ70IEajfuWmYG7jCeE4fsh3c9fZ1aqkQY3Cqos"],
     });
+    if (Object.values(ans).includes("reject")) {
+      Taro.showToast({
+        title: "必须要允许通知才可以收到面试信息",
+        icon: "error",
+        duration: 2000,
+      });
+      throw new Error("必须允许！");
+    }
   }
 
   return {

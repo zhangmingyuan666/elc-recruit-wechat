@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-30 16:20:26
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-02 01:22:15
+ * @LastEditTime: 2022-10-21 22:59:01
  * @FilePath: \gdutelc-recruit-wechat\src\components\form\main-form\formdata-hook.js
  */
 import { defineProps, ref, onBeforeMount, computed } from "vue";
@@ -64,6 +64,7 @@ export default () => {
       if (valid) {
         console.log(formData.value);
         const res = await handleRecruitForm(openid, formData.value); // 提交成功？
+
         if (res.code === 200) {
           Taro.showToast({
             title: "提交报名成功",
@@ -72,7 +73,7 @@ export default () => {
           });
         } else {
           Taro.showToast({
-            title: "提交报名失败",
+            title: res.msg ?? "提交报名失败",
             icon: "error",
             duration: 2000,
           });

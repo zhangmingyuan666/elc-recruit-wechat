@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-30 13:46:17
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-01 23:56:19
+ * @LastEditTime: 2022-10-21 23:08:49
  * @FilePath: \gdutelc-recruit-wechat\src\store\index.js
  */
 import { createStore } from "vuex";
@@ -14,7 +14,7 @@ import { getSignInStatus } from "@/service/personal";
 const { wxLogin } = useWechat();
 export default createStore({
   state: {
-    openid: localCache.getCache("openid"),
+    openid: localCache.getCache("openid") ?? "",
     avatarUrl: localCache.getCache("avatarUrl"),
     nickName: localCache.getCache("nickName"),
     status: localCache.getCache("status"),

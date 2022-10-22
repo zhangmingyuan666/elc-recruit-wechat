@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-08-14 09:37:06
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-02 00:56:57
+ * @LastEditTime: 2022-10-22 23:10:02
  * @FilePath: \gdutelc-recruit-wechat\src\components\personal-info\personal-profile\personal-status\index.vue
 -->
 <template>
@@ -40,7 +40,7 @@ onMounted(() => {
 });
 
 // // 轮询签到状态，5s一次
-// setInterval(() => {
-//   store.dispatch("getSignInStatusAction");
-// }, 5000);
+setInterval(() => {
+  store.dispatch("getSignInStatusAction");
+}, 5000);
 </script>

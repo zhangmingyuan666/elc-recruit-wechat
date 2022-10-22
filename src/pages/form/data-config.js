@@ -62,8 +62,8 @@ export const BASE_FORM_CONFIG = {
   clazz: "",
   whereFind: "",
   profile: "",
-  skill: "唱跳rap篮球",
-  hasJoin: "理塘社",
+  skill: "",
+  hasJoin: "",
 };
 
 // export const BASE_FORM_CONFIG = {

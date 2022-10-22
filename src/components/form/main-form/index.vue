@@ -85,21 +85,21 @@
     </nut-form>
   </view>
   <view v-else class="flex flex-col justify-around m-4">
-    <div class="my-2">
+    <!-- <div class="my-2">
       <nut-button
         type="primary"
         @click="clickToFirstLogin"
         :style="{ width: '100% !important' }"
         >我是第一次报名</nut-button
       >
-    </div>
+    </div> -->
     <div class="my-2">
       <nut-button
         plain
         type="primary"
         @click="clickToSecondLogin"
         :style="{ width: '100% !important' }"
-        >我提交过报名表了</nut-button
+        >我要报名</nut-button
       >
     </div>
     <!-- <div class="my-2">
@@ -137,10 +137,12 @@ const currentPickerProp = ref("");
 const currentPickerList = ref([]);
 
 const submitForm = async () => {
-  // if (openid.value) {
-  //   await store.dispatch("getOpenidAction");
-  // }
-  await submit(openid.value);
+  try {
+    await getMessage();
+    await submit(openid.value);
+  } catch (error) {}
+
+  return;
 };
 
 // 赋值当前选中的prop
