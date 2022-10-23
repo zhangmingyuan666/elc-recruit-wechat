@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-30 13:46:17
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-21 23:08:49
+ * @LastEditTime: 2022-10-23 12:55:03
  * @FilePath: \gdutelc-recruit-wechat\src\store\index.js
  */
 import { createStore } from "vuex";
@@ -16,7 +16,7 @@ export default createStore({
   state: {
     openid: localCache.getCache("openid") ?? "",
     avatarUrl: localCache.getCache("avatarUrl"),
-    nickName: localCache.getCache("nickName"),
+    nickName: localCache.getCache("nickname"),
     status: localCache.getCache("status"),
     signInStatus: 0, // 还没签到
   },

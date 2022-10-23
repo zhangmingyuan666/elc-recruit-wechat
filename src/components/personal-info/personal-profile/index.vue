@@ -1,3 +1,10 @@
+<!--
+ * @Date: 2022-08-13 23:59:00
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-23 12:31:30
+ * @FilePath: \gdutelc-recruit-wechat\src\components\personal-info\personal-profile\index.vue
+ * @description: none
+-->
 <template>
   <template v-if="isLogin">
     <view
@@ -9,6 +16,7 @@
 
     <PersonalStatus></PersonalStatus>
     <PersonalStep></PersonalStep>
+    <PersonalExitLogin></PersonalExitLogin>
   </template>
   <template v-else>
     <nut-empty description="需要提交报名表后才可查看此处的功能">
@@ -28,6 +36,7 @@ import { useStore } from "vuex";
 import PersonalAvator from "./personal-avator";
 import PersonalStatus from "./personal-status";
 import PersonalStep from "./personal-step";
+import PersonalExitLogin from "./exit-login";
 const store = useStore();
 const isLogin = computed(() => store.state.openid);
 </script>

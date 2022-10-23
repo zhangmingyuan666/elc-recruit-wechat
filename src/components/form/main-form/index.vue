@@ -26,6 +26,7 @@
           </template>
           <template v-if="formChild.tag === 'textarea'">
             <textarea
+              class="w-full"
               v-model="formData[formChild.prop]"
               type="text"
               :cursorSpacing="200"

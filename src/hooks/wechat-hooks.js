@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-14 12:04:57
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-22 23:31:01
+ * @LastEditTime: 2022-10-23 12:51:56
  * @FilePath: \gdutelc-recruit-wechat\src\hooks\wechat-hooks.js
  */
 import Taro from "@tarojs/taro";
@@ -42,6 +42,8 @@ export default () => {
         getUserInfo(),
       ]);
       // console.log(result);
+
+      console.log(userInfo);
 
       const loginResult = await getLogin(code);
       const openid = loginResult.data;

@@ -65,9 +65,11 @@ export const formConfig = [
     tag: "picker",
     label: "第二意向部门",
     prop: "secondDept",
+    required: true,
     options: {
       columns: depList,
     },
+    rules: [REQUIRED_RULES("第二部门")],
   },
   {
     tag: "picker",

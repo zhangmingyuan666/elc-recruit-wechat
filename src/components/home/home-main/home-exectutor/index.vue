@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-08-12 18:44:51
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-22 23:27:06
+ * @LastEditTime: 2022-10-23 13:54:36
  * @FilePath: \gdutelc-recruit-wechat\src\components\home\home-main\home-exectutor\index.vue
  * @description: none
 -->
@@ -30,37 +30,32 @@ import Taro from "@tarojs/taro";
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { putPersonalSignIn } from "@/service/personal";
-const { permitScanQRCode } = useWechat();
+const { permitScanQRCode, getMessage } = useWechat();
 const store = useStore();
 const openid = computed(() => store.state.openid);
 
 const scanCodeEvent = async () => {
   try {
-    const ans = await wx.requestSubscribeMessage({
-      tmplIds: ["i5rbTJ70IEajfuWmYG7jCeE4fsh3c9fZ1aqkQY3Cqos"],
-    });
-    if (Object.values(ans).includes("reject")) {
-      Taro.showToast({
-        title: "必须要允许通知才可以收到面试信息",
-        icon: "error",
-        duration: 2000,
-      });
-      return;
-    }
+    await getMessage();
 
     const qrCodeResult = await permitScanQRCode();
     console.log(qrCodeResult);
     const res = await putPersonalSignIn(openid.value, qrCodeResult);
-    if (res.data.code === 200) {
+
+    console.log("res", res);
+    if (res.data?.code === 200) {
       // 此时说明更改成功
       Taro.showToast({
         title: "扫码签到成功",
+        icon: "success",
         duration: 2000,
       });
+    } else {
+      throw new Error(res.msg);
     }
   } catch (err) {
     Taro.showToast({
-      title: "扫码签到失败",
+      title: err.message ?? "扫码签到失败",
       icon: "error",
       duration: 2000,
     });
