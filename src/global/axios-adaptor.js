@@ -1,3 +1,10 @@
+/*
+ * @Date: 2022-08-30 12:55:07
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-23 14:41:57
+ * @FilePath: \gdutelc-recruit-wechat\src\global\axios-adaptor.js
+ * @description: none
+ */
 import axios from "axios";
 import Taro from "@tarojs/taro";
 
@@ -6,6 +13,7 @@ axios.defaults.adapter = function (config) {
   return new Promise((resolve, reject) => {
     var settle = require("axios/lib/core/settle");
     var buildURL = require("axios/lib/helpers/buildURL");
+
     Taro.request({
       method: config.method.toUpperCase(),
       url:
@@ -26,6 +34,9 @@ axios.defaults.adapter = function (config) {
           header: response.header,
           config: config,
         };
+
+        console.log(config);
+        console.log("this is adapator");
         settle(resolve, reject, response);
       },
     });

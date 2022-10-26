@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-08-14 12:04:57
  * @LastEditors: zhang-mingyuan123 2369558390@qq.com
- * @LastEditTime: 2022-10-23 12:51:56
+ * @LastEditTime: 2022-10-25 16:17:41
  * @FilePath: \gdutelc-recruit-wechat\src\hooks\wechat-hooks.js
  */
 import Taro from "@tarojs/taro";
@@ -75,6 +75,7 @@ export default () => {
     const ans = await wx.requestSubscribeMessage({
       tmplIds: ["i5rbTJ70IEajfuWmYG7jCeE4fsh3c9fZ1aqkQY3Cqos"],
     });
+    console.log(ans);
     if (Object.values(ans).includes("reject")) {
       Taro.showToast({
         title: "必须要允许通知才可以收到面试信息",

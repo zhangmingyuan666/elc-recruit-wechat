@@ -1,3 +1,10 @@
+<!--
+ * @Date: 2022-08-14 10:14:31
+ * @LastEditors: zhang-mingyuan123 2369558390@qq.com
+ * @LastEditTime: 2022-10-26 10:12:30
+ * @FilePath: \gdutelc-recruit-wechat\src\components\personal-info\personal-profile\personal-step\index.vue
+ * @description: none
+-->
 <template>
   <MingCard>
     <template v-slot>
@@ -8,8 +15,9 @@
     </template>
     <template v-slot:extand>
       <view>
-        <view v-if="currentStepIndex !== -1">
-          <view class="h-100 px-2">
+        <!-- 如果不是-1的话，此人没有通过面试 -->
+        <view v-if="currentStepIndex >= 0">
+          <view class="px-2 my-2">
             <nut-steps
               direction="vertical"
               progress-dot
@@ -18,15 +26,21 @@
               <template v-for="(step, index) of stepsList" :key="step.content">
                 <nut-step :title="caculateTitle(index)">
                   <template v-slot:content>
-                    <p>{{ step.content }}</p>
-                    <p v-if="step.address">{{ step.address }}</p>
+                    <div
+                      :style="{
+                        height: '50px',
+                      }"
+                    >
+                      <p>{{ step.content }}</p>
+                      <p v-if="step.address">{{ step.address }}</p>
+                    </div>
                   </template>
                 </nut-step>
               </template>
             </nut-steps>
           </view>
         </view>
-
+        <!-- 如果是-1的话，此人没有通过面试 -->
         <view v-else>
           <nut-empty
             description="很抱歉，你没有通过这次的面试，希望你以后继续努力，坚持学习，我们还会相见。"
@@ -49,12 +63,17 @@ import MingCard from "@/base-ui/card";
 import { stepsList } from "./step-config";
 import { computed, ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import { createInterval } from "@/utils/intervals.js";
 
 const store = useStore();
-
+createInterval(() => {
+  store.dispatch("getInterviewStatus");
+}, 5000);
 onMounted(() => {
   store.dispatch("getInterviewStatus");
 });
+
+createInterval;
 
 const currentStepIndex = computed(() => store.getters.getStatus);
 
